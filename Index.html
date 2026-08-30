@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Online Permohonan Informasi Publik - PPID BERKAH</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col justify-between font-sans text-slate-800">
+
+    <!-- Header Banner -->
+    <div class="w-full bg-emerald-800 shadow-md">
+        <div class="h-32 md:h-60 bg-cover bg-center opacity-90 relative flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80');">
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/80 to-teal-900/80"></div>
+            <!-- Logo & Title Overlay -->
+            <div class="relative z-10 text-center px-12">
+                <div class="inline-block bg-white p-2 rounded-full shadow-md mb-2">
+                    <img src="img/Logo_PPID.png" alt="Logo PPID" class="w-10 h-10 object-contain">
+                </div>
+                <h1 class="text-white text-sm md:text-base font-semibold tracking-wide">PPID BERKAH - DINAS PERKIMTAN KAB. SEKADAU</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container / Form Card -->
+    <main class="container mx-auto px-4 max-w-2xl -mt-10 mb-16 relative z-20">
+        <div class="bg-white rounded-xl shadow-lg border border-slate-200 p-6 md:p-10">
+            
+            <div class="mb-8 border-b border-slate-100 pb-4">
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Formulir Online Permohonan Informasi Publik</h2>
+                <p class="text-xs text-slate-500 mt-1">Silakan isi formulir di bawah ini dengan data yang valid sesuai ketentuan layanan informasi publik.</p>
+            </div>
+
+            <!-- FORM UTAMA -->
+            <form id="formPermohonan" class="space-y-6" onsubmit="handleSubmit(event)">
+                
+                <!-- 1. Nama Lengkap -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap sesuai KTP / E-KTP <span class="text-red-500">*</span></label>
+                    <input type="text" id="nama" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition text-sm bg-slate-50 focus:bg-white" placeholder="Masukkan nama lengkap...">
+                </div>
+
+                <!-- 2. NIK -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Nomor Induk Kependudukan (NIK) <span class="text-red-500">*</span></label>
+                    <input type="text" id="nik" required pattern="[0-9]{16}" title="NIK harus 16 digit angka" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition text-sm bg-slate-50 focus:bg-white" placeholder="16 digit nomor NIK...">
+                </div>
+
+                <!-- 3. Alamat -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Alamat <span class="text-red-500">*</span></label>
+                    <textarea id="alamat" rows="3" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition text-sm bg-slate-50 focus:bg-white resize-none" placeholder="Masukkan alamat lengkap pemohon..."></textarea>
+                </div>
+
+                <!-- 4. Nomor Telepon WA -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Nomor telepon WA <span class="text-red-500">*</span></label>
+                    <input type="tel" id="whatsapp" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition text-sm bg-slate-50 focus:bg-white" placeholder="Contoh: 081234567890">
+                </div>
+
+                <!-- 5. Email -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Alamat e-mail <span class="text-red-500">*</span></label>
+                    <input type="email" id="email" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition text-sm bg-slate-50 focus:bg-white" placeholder="nama@email.com">
+                </div>
+
+                <!-- 6. Informasi yang dimohonkan -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Tuliskan informasi publik yang dimohonkan <span class="text-red-500">*</span></label>
+                    <textarea id="rincianInformasi" rows="4" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition text-sm bg-slate-50 focus:bg-white" placeholder="Uraikan secara jelas informasi yang ingin didapatkan..."></textarea>
+                </div>
+
+                <!-- 7. Cara Memperoleh Informasi -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Cara memperoleh informasi publik <span class="text-red-500">*</span></label>
+                    <select id="caraMemperoleh" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition text-sm bg-slate-50 focus:bg-white">
+                        <option value="" disabled selected>-- Pilih Opsi --</option>
+                        <option value="Melihat / Membaca / Mendengar">Melihat / Membaca / Mendengar</option>
+                        <option value="Mendapatkan Salinan Informasi">Mendapatkan Salinan Informasi</option>
+                    </select>
+                </div>
+
+                <!-- 8. Format Salinan Informasi -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Format salinan informasi publik <span class="text-red-500">*</span></label>
+                    <select id="formatSalinan" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition text-sm bg-slate-50 focus:bg-white">
+                        <option value="" disabled selected>-- Pilih Opsi --</option>
+                        <option value="Hardcopy (Tertulis/Cetak)">Hardcopy (Tertulis / Cetak)</option>
+                        <option value="Softcopy (Digital / File)">Softcopy (Digital / File)</option>
+                    </select>
+                </div>
+
+                <!-- 9. Cara Mendapatkan Salinan -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Cara mendapatkan salinan informasi <span class="text-red-500">*</span></label>
+                    <select id="caraSalinan" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition text-sm bg-slate-50 focus:bg-white">
+                        <option value="" disabled selected>-- Pilih Opsi --</option>
+                        <option value="Mengambil Langsung">Mengambil Langsung ke Kantor</option>
+                        <option value="Kurir / Pos / Ekspedisi">Kurir / Pos / Ekspedisi</option>
+                        <option value="Email / WhatsApp">E-mail / WhatsApp (Digital)</option>
+                    </select>
+                </div>
+
+                <!-- Catatan Darurat / Keterangan bawah -->
+                <div class="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-r-lg text-xs text-amber-800">
+                    <p>Formulir ini tidak dipantau secara real-time. Jika ini merupakan keadaan darurat, silahkan menghubungi 082150452666 - Indra Suherman</p>
+                </div>
+
+                <!-- Tombol Submit -->
+                <div>
+                    <button type="submit" id="btnSubmit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition duration-200 shadow-md flex items-center justify-center space-x-2">
+                        <span id="btnText">Submit</span>
+                        <i id="btnLoader" class="fa-solid fa-spinner fa-spin hidden"></i>
+                    </button>
+                </div>
+
+            </form>
+            <!-- END FORM -->
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-4 text-center text-xs text-slate-500 bg-white border-t border-slate-200 flex flex-col md:flex-row justify-between px-6 items-center">
+        <p>&copy; 2026 Dinas Perkimtan Kabupaten Sekadau</p>
+        <p class="mt-2 md:mt-0 bg-slate-100 px-3 py-1 rounded-full text-slate-600 font-medium">PPID BERKAH Platform</p>
+    </footer>
+
+    <!-- Script JavaScript Integrasi Google Sheets -->
+    <script>
+        // Ganti URL di bawah ini dengan URL Web App Google Apps Script Anda setelah di-deploy
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyashkNyrSeCTrjvI_iqLi0bSDYXdCR-fJrxpSlo_V6FEnxsrm3gihc-Dgwq6IyzZ5V/exec";
+
+        function handleSubmit(e) {
+            e.preventDefault();
+
+            const btnSubmit = document.getElementById('btnSubmit');
+            const btnText = document.getElementById('btnText');
+            const btnLoader = document.getElementById('btnLoader');
+
+            // Ubah tombol menjadi status loading
+            btnSubmit.disabled = true;
+            btnText.innerText = "Mengirim...";
+            btnLoader.classList.remove('hidden');
+
+            const formData = {
+                nama: document.getElementById('nama').value,
+                nik: document.getElementById('nik').value,
+                alamat: document.getElementById('alamat').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                email: document.getElementById('email').value,
+                rincianInformasi: document.getElementById('rincianInformasi').value,
+                caraMemperoleh: document.getElementById('caraMemperoleh').value,
+                formatSalinan: document.getElementById('formatSalinan').value,
+                caraSalinan: document.getElementById('caraSalinan').value
+            };
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Penting untuk koneksi Apps Script
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(() => {
+                alert('Permohonan informasi publik berhasil dikirim dan tercatat di sistem!');
+                document.getElementById('formPermohonan').reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat mengirim data. Silakan coba lagi.');
+            })
+            .finally(() => {
+                btnSubmit.disabled = false;
+                btnText.innerText = "Submit";
+                btnLoader.classList.add('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
